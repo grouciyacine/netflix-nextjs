@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  username   String     @unique
+  email      String     @unique
+  password   String
+  cretedAt   DateTime   @default(now())
+  favoriteID String[]
+  sessions   Session[]
+  accounts   Account[]
+  profile    Profiles[]
+  image      String
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refreshToken      String? @db.String
+  access_token      String? @db.String
+  expireAt          Int?
+  token_type        String?
+  id_token          String?
+  scope             String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String?  @db.String
+  userId       String   @db.ObjectId
+  expire       DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Movie {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  imgUrl      String
+  vidURL      String
+  genre       String
+  duration    String
+  note        Float
+  Stars       String[] @db.ObjectId
+}
+
+model Star {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  imgUrl   String
+  //movie   Movie  @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  moviesId String[] @db.ObjectId
+}
+
+model Profiles {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId String  @db.ObjectId
+  title  String?
+  img    String?
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
