@@ -1,3 +1,12 @@
+## Netflix Clone
+
+![Capture d’écran 2023-10-23 165826](https://github.com/grouciyacine/netflix-nextjs/assets/107037694/92522b08-a1a8-4c69-b0fb-4cb5410111f6)
+
+![Capture d’écran 2023-10-23 165859](https://github.com/grouciyacine/netflix-nextjs/assets/107037694/a38ea3cd-dd83-453c-bfa1-ed37194e2fe9)
+
+![Capture d’écran 2023-10-23 165932](https://github.com/grouciyacine/netflix-nextjs/assets/107037694/a2e77ed4-46bc-4f0b-a0a6-73cd053b440b)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
